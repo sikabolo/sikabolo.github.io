@@ -1,0 +1,52 @@
+---
+layout: page
+title: Categories
+permalink: /categories/
+---
+
+<div class="tags-expo-section">
+  {% for tag in site.categories %}
+  <a href="#{{ tag[0] | slugify }}" class="post-tag">@{{ tag[0] }}</a>
+  {% endfor %}
+  <hr/>
+  {% for tag in site.categories %}
+  <div id="{{ tag[0] | slugify }}" class="filter-section">
+  <h3>{{ tag[0] }}</h3>
+  <ul>
+    {% for post in tag[1] %}
+    <li><span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span> - 
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul></div>
+  {% endfor %}
+</div>
+
+<script>
+(function() {
+  var a = document.querySelectorAll('.post-tag');
+  for (var i = 0; i < a.length; i++) {
+    a[i].onclick = function(e) {
+      e = e || window.event; // IE 8 Compatibility
+      var target = e.target || e.srcElement; // same as above
+      for (var j = 0; j < a.length; j++) {
+        if (a[j] != target) {
+          a[j].className = 'post-tag';
+          document.getElementById(a[j].getAttribute('href').substr(1)).className = 'filter-section';
+        } else {
+          target.classList.toggle('select');
+          document.getElementById(target.getAttribute('href').substr(1)).classList.toggle('result');
+        }
+      }
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false); // IE 8 Compatibility
+    } 
+    if (window.location.hash.length) {
+      try {
+        document.querySelector('[href="' + decodeURI(window.location.hash) + '"]').className = 'post-tag select';
+        document.getElementById(decodeURI(window.location.hash).substr(1)).className = 'filter-section result';
+      } catch(err){}
+    }
+  }
+})();
+
+</script>

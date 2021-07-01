@@ -1,0 +1,48 @@
+# Site Info
+title: "Rayuela"
+baseurl: ''
+weburl: 'https://sikabolo.github.io'
+author: 'Anana'
+logo: '/logo.jpg'
+
+# Site configurations
+plugins:
+  - jekyll-paginate
+sass:
+  style: compressed
+
+theme_color: '#ff9159'
+paginate: 10
+paginate_path: '/page:num/'
+permalink: '/:year/:title'
+excerpt_separator: '<!-- more -->'
+
+# Navigation (2nd level links supported)
+nav:
+  Rayuela:           
+    - '/'
+    - { Archive: '/archive/' }
+    - { Categories: '/categories/' }
+    - { Tags: '/tags/' }
+    - { RSS: '/feed.xml'}
+    #- { Search: '/search/' }
+
+# Add your friend-links
+friends:
+   Platform 9.75: 'https://m1dor1.github.io/9.75/'
+   Paraociden: 'https://paraociden.github.io/'
+   奇想齋: 'https://i.nebula.moe/'
+
+# Relative path compatibility (JS hack, experimental and buggy feature)
+# relative_path: true
+
+# Where are tags and categories displayed
+disqus_shortname: Anana
+tag_page: '/tags/'
+category_page: '/categories/'
+
+# reveal.js slide template
+reveal_path: https://cdn.bootcss.com/reveal.js/3.4.1/
+
+# additional message in sidebar
+#addition: '<a href="https://github.com/author/megumi/">View on Github</a>'
